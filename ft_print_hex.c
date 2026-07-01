@@ -6,7 +6,7 @@
 /*   By: msowinsk <msowinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/01 12:57:28 by msowinsk          #+#    #+#             */
-/*   Updated: 2026/07/01 14:27:31 by msowinsk         ###   ########.fr       */
+/*   Updated: 2026/07/01 14:50:28 by msowinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 static char	ft_toupper_wrap(unsigned int i, char c)
 {
-	i = 0;
+	(void) i;
 	return (ft_toupper(c));
 }
 
