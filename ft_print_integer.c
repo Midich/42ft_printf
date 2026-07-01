@@ -6,7 +6,7 @@
 /*   By: msowinsk <msowinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 14:14:27 by msowinsk          #+#    #+#             */
-/*   Updated: 2026/07/01 13:03:17 by msowinsk         ###   ########.fr       */
+/*   Updated: 2026/07/01 15:16:41 by msowinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,17 @@ int	ft_print_integer(t_spec *spec, int i)
 	int		len;
 
 	str = ft_itoa(i);
+	if (!str)
+		return (-1);
 	str = ft_format_precision(spec, str);
+	if (!str)
+		return (-1);
 	str = ft_format_sign_space(spec, str);
+	if (!str)
+		return (-1);
 	str = ft_format_width(spec, str);
+	if (!str)
+		return (-1);
 	len = ft_strlen(str);
 	write(0, str, len);
 	free(str);
