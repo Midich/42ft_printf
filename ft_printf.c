@@ -6,7 +6,7 @@
 /*   By: msowinsk <msowinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 10:05:45 by msowinsk          #+#    #+#             */
-/*   Updated: 2026/07/01 13:33:53 by msowinsk         ###   ########.fr       */
+/*   Updated: 2026/07/01 15:04:49 by msowinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,16 @@
 static int	print_specifier(const char *frmt, int *i, int *len, va_list ap)
 {
 	t_spec	*spec;
+	int		ret;
 
 	spec = ft_parse_specifiers(frmt, i);
 	if (!spec)
 		return (0);
-	*len += ft_handle_specifiers(spec, ap);
+	ret = ft_handle_specifiers(spec, ap);
 	free(spec);
+	if (ret < 0)
+		return (0);
+	*len += ret;
 	return (1);
 }
 
@@ -34,6 +38,8 @@ int	ft_printf(const char *format, ...)
 	int		len;
 	int		i;
 
+	if (!format)
+		return (-1);
 	va_start(ap, format);
 	len = 0;
 	i = 0;
