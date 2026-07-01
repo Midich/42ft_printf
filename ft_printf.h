@@ -6,7 +6,7 @@
 /*   By: msowinsk <msowinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 10:05:34 by msowinsk          #+#    #+#             */
-/*   Updated: 2026/06/30 13:17:53 by msowinsk         ###   ########.fr       */
+/*   Updated: 2026/07/01 14:29:32 by msowinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <stdarg.h>
 # include <stdint.h>
 
-typedef struct s_format
+typedef struct s_spec
 {
 	int		width;
 	int		minus;
@@ -25,17 +25,22 @@ typedef struct s_format
 	int		space;
 	int		plus;
 	char	conversion;
-}	t_format;
+}	t_spec;
 
-int			ft_printf(const char *s, ...);
-t_format	*ft_parse_specifiers(const char *frmt, int *i);
-int		ft_handle_specifiers(t_format spec, va_list ap);
-int		ft_print_character(t_format spec, char c);
-int		ft_print_string(t_format spec, char *s);
-int		ft_print_pointer(t_format spec, uintptr_t p);
-int		ft_print_integer(t_format spec, int i);
-int		ft_print_uinteger(t_format spec, unsigned int i);
-int		ft_print_hex(t_format spec, unsigned int u);
-int		ft_print_hex(t_format spec, unsigned int u);
+int		ft_printf(const char *s, ...);
+t_spec	*ft_parse_specifiers(const char *frmt, int *i);
+int		ft_handle_specifiers(t_spec *spec, va_list ap);
+int		ft_print_character(t_spec *spec, int c);
+int		ft_print_string(t_spec *spec, char *s);
+int		ft_print_integer(t_spec *spec, int i);
+int		ft_print_uinteger(t_spec *spec, unsigned int i);
+int		ft_print_hex(t_spec *spec, unsigned long int u);
+
+char	*ft_format_precision(t_spec *spec, char *si);
+char	*ft_format_sign_space(t_spec *spec, char *si);
+char	*ft_format_width(t_spec *spec, char *si);
+
+char	*ft_utoa(unsigned int a);
+char	*ft_hextoa(unsigned long int a);
 
 #endif

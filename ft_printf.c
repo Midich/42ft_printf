@@ -6,24 +6,26 @@
 /*   By: msowinsk <msowinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 10:05:45 by msowinsk          #+#    #+#             */
-/*   Updated: 2026/06/30 13:19:03 by msowinsk         ###   ########.fr       */
+/*   Updated: 2026/07/01 13:33:53 by msowinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include "libft/libft.h"
 #include <stdarg.h>
 #include <stdlib.h>
 #include <limits.h>
+#include <unistd.h>
 
-static int	print_spec(const char *frmt, long *i, long *len, va_list ap)
+static int	print_specifier(const char *frmt, int *i, int *len, va_list ap)
 {
-	t_format	spec;
+	t_spec	*spec;
 
 	spec = ft_parse_specifiers(frmt, i);
 	if (!spec)
 		return (0);
 	*len += ft_handle_specifiers(spec, ap);
-	free(form);
+	free(spec);
 	return (1);
 }
 
@@ -41,12 +43,14 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			if (!print_spec(format, &i, &len, ap))
+			if (!print_specifier(format, &i, &len, ap))
 				return (-1);
 		}
 		else
+		{
 			len += write(0, &format[i], 1);
-		i++;
+			i++;
+		}
 	}
 	va_end(ap);
 	return (len);

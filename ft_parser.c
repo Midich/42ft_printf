@@ -6,7 +6,7 @@
 /*   By: msowinsk <msowinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 11:41:29 by msowinsk          #+#    #+#             */
-/*   Updated: 2026/06/30 15:34:19 by msowinsk         ###   ########.fr       */
+/*   Updated: 2026/07/01 13:03:17 by msowinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@ static int	in_set(const char *set, char c)
 	return (0);
 }
 
-static t_format	*init_format(void)
+static t_spec	*init_format(void)
 {
-	t_format	*frmt;
+	t_spec	*frmt;
 
-	frmt = malloc(sizeof(t_format));
+	frmt = malloc(sizeof(t_spec));
 	if (!frmt)
 		return (0);
-	ft_bzero(frmt, sizeof(t_format));
+	ft_bzero(frmt, sizeof(t_spec));
 	frmt->precision = -1;
 	return (frmt);
 }
 
-static void	get_flags(t_format *spec, char c)
+static void	get_flags(t_spec *spec, char c)
 {
 	if (c == '-')
 		spec->minus = 1;
@@ -50,9 +50,9 @@ static void	get_flags(t_format *spec, char c)
 		spec->plus = 1;
 }
 
-t_format	*ft_parse_specifiers(const char *frmt, int *i)
+t_spec	*ft_parse_specifiers(const char *frmt, int *i)
 {
-	t_format	*spec;
+	t_spec	*spec;
 
 	spec = init_format();
 	if (!spec)
@@ -70,8 +70,6 @@ t_format	*ft_parse_specifiers(const char *frmt, int *i)
 	{
 		(*i)++;
 		spec->precision = ft_atoi(&frmt[*i]);
-		if (spec->precision < 0)
-			spec->presision = 0;
 		while (ft_isdigit(frmt[*i]))
 			(*i)++;
 	}

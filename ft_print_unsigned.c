@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_string.c                                  :+:      :+:    :+:   */
+/*   ft_print_unsigned.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msowinsk <msowinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/30 13:55:51 by msowinsk          #+#    #+#             */
-/*   Updated: 2026/07/01 13:03:17 by msowinsk         ###   ########.fr       */
+/*   Created: 2026/07/01 12:32:43 by msowinsk          #+#    #+#             */
+/*   Updated: 2026/07/01 14:31:55 by msowinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
+#include <stdlib.h>
 #include <unistd.h>
 
-int	ft_print_string(t_spec *spec, char *s)
+int	ft_print_uinteger(t_spec *spec, unsigned int i)
 {
+	char	*str;
 	int		len;
-	int		size;
 
-	size = 0;
-	if (!s)
-		s = "(null)";
-	len = ft_strlen(s);
-	if (spec->precision >= 0 && spec->precision < len)
-		len = spec->precision;
-	if (spec->minus)
-	{
-		size += write(0, s, len);
-		while (spec->width-- > len)
-			size += write(0, " ", 1);
-	}
-	else
-	{
-		while (spec->width-- > len)
-			size += write(0, " ", 1);
-		size += write(0, s, len);
-	}
-	return (size);
+	str = ft_utoa(i);
+	str = ft_format_precision(spec, str);
+	str = ft_format_width(spec, str);
+	len = ft_strlen(str);
+	write(0, str, len);
+	free(str);
+	return (len);
 }

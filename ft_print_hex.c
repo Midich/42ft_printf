@@ -1,29 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_integer.c                                 :+:      :+:    :+:   */
+/*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msowinsk <msowinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/30 14:14:27 by msowinsk          #+#    #+#             */
-/*   Updated: 2026/07/01 13:03:17 by msowinsk         ###   ########.fr       */
+/*   Created: 2026/07/01 12:57:28 by msowinsk          #+#    #+#             */
+/*   Updated: 2026/07/01 14:27:31 by msowinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
-#include <unistd.h>
 #include <stdlib.h>
+#include <unistd.h>
 
-int	ft_print_integer(t_spec *spec, int i)
+static char	ft_toupper_wrap(unsigned int i, char c)
 {
-	char	*str;
-	int		len;
+	i = 0;
+	return (ft_toupper(c));
+}
 
-	str = ft_itoa(i);
+int	ft_print_hex(t_spec *spec, unsigned long int u)
+{
+	int		len;
+	char	*str;
+	char	*temp;
+
+	str = ft_hextoa(u);
 	str = ft_format_precision(spec, str);
-	str = ft_format_sign_space(spec, str);
+	if (spec->hash || spec->conversion == 'p')
+	{
+		temp = ft_strjoin("0x", str);
+		free(str);
+		str = temp;
+	}
 	str = ft_format_width(spec, str);
+	if (spec->conversion == 'X')
+	{
+		temp = ft_strmapi(str, ft_toupper_wrap);
+		free(str);
+		str = temp;
+	}
 	len = ft_strlen(str);
 	write(0, str, len);
 	free(str);
