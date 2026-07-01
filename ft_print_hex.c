@@ -43,7 +43,7 @@ static char	*ft_strmapi_free(char *s, char (*f)(unsigned int, char))
 	return (temp);
 }
 
-int	ft_print_hex(t_spec *spec, unsigned long int u)
+int	ft_print_hex(t_spec *spec, unsigned int u)
 {
 	int		len;
 	char	*str;
@@ -51,14 +51,45 @@ int	ft_print_hex(t_spec *spec, unsigned long int u)
 	str = ft_hextoa(u);
 	if (!str)
 		return (-1);
+	if (spec->precision == 0 && u == 0)
+		str[0] = 0;
 	str = ft_format_precision(spec, str);
-	if (spec->hash || spec->conversion == 'p')
+	if ((spec->hash && u != 0) && !(spec->precision == 0 && u == 0))
 		str = add_prefix(str);
 	if (!str)
 		return (-1);
 	str = ft_format_width(spec, str);
 	if (spec->conversion == 'X')
 		str = ft_strmapi_free(str, ft_toupper_wrap);
+	if (!str)
+		return (-1);
+	len = ft_strlen(str);
+	write(1, str, len);
+	free(str);
+	return (len);
+}
+
+int	ft_print_pointer(t_spec *spec, unsigned long int u)
+{
+	int		len;
+	char	*str;
+
+	if (u == 0)
+		str = ft_strdup("(nil)");
+	else
+	{
+		str = ft_hextoa(u);
+		if (!str)
+			return (-1);
+		str = ft_format_precision(spec, str);
+		str = add_prefix(str);
+		if (!str)
+			return (-1);
+		str = ft_format_sign_space(spec, str);
+	}
+	if (!str)
+		return (-1);
+	str = ft_format_width(spec, str);
 	if (!str)
 		return (-1);
 	len = ft_strlen(str);

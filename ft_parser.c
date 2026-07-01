@@ -70,7 +70,7 @@ t_spec	*ft_parse_specifiers(const char *frmt, int *i)
 	{
 		(*i)++;
 		spec->precision = ft_atoi(&frmt[*i]);
-		while (ft_isdigit(frmt[*i]))
+		while (ft_isdigit(frmt[*i]) || frmt[*i] == '-')
 			(*i)++;
 	}
 	spec->conversion = frmt[(*i)++];

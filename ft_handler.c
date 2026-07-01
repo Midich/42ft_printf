@@ -22,7 +22,7 @@ int	ft_handle_specifiers(t_spec *spec, va_list ap)
 	if (spec->conversion == 's')
 		return (ft_print_string(spec, va_arg(ap, char *)));
 	if (spec->conversion == 'p')
-		return (ft_print_hex(spec, va_arg(ap, unsigned long int)));
+		return (ft_print_pointer(spec, va_arg(ap, unsigned long int)));
 	if (spec->conversion == 'd' || spec->conversion == 'i')
 		return (ft_print_integer(spec, va_arg(ap, int)));
 	if (spec->conversion == 'u')

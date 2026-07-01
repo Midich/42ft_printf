@@ -34,7 +34,7 @@ char	*ft_format_precision(t_spec *spec, char *si)
 		if (!str)
 			return (0);
 		ft_memcpy(str, si, offset);
-		ft_memset(str + offset, '0', prec - len - offset);
+		ft_memset(str + offset, '0', prec - len + offset);
 		ft_memcpy(str + 2 * offset + prec - len, si + offset, len - offset);
 		str[offset + prec] = 0;
 		free(si);

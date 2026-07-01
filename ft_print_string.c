@@ -14,17 +14,11 @@
 #include "libft/libft.h"
 #include <unistd.h>
 
-int	ft_print_string(t_spec *spec, char *s)
+static int	ft_string_padding(t_spec *spec, char *s, int len)
 {
-	int		len;
-	int		size;
+	int size;
 
 	size = 0;
-	if (!s)
-		s = "(null)";
-	len = ft_strlen(s);
-	if (spec->precision >= 0 && spec->precision < len)
-		len = spec->precision;
 	if (spec->minus)
 	{
 		size += write(1, s, len);
@@ -37,5 +31,22 @@ int	ft_print_string(t_spec *spec, char *s)
 			size += write(1, " ", 1);
 		size += write(1, s, len);
 	}
+	return (size);
+}
+
+int	ft_print_string(t_spec *spec, char *s)
+{
+	int		len;
+	int		size;
+
+	size = 0;
+	if (!s && spec->precision >= 0 && spec->precision < 6)
+		return (ft_string_padding(spec, "", 0));
+	if (!s)
+		s = "(null)";
+	len = ft_strlen(s);
+	if (spec->precision >= 0 && spec->precision < len)
+		len = spec->precision;
+	size = ft_string_padding(spec, s, len);
 	return (size);
 }

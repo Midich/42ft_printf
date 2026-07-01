@@ -23,6 +23,8 @@ int	ft_print_uinteger(t_spec *spec, unsigned int i)
 	str = ft_utoa(i);
 	if (!str)
 		return (-1);
+	if (spec->precision == 0 && i == 0)
+		str[0] = 0;
 	str = ft_format_precision(spec, str);
 	if (!str)
 		return (-1);

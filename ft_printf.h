@@ -34,7 +34,8 @@ int		ft_print_character(t_spec *spec, int c);
 int		ft_print_string(t_spec *spec, char *s);
 int		ft_print_integer(t_spec *spec, int i);
 int		ft_print_uinteger(t_spec *spec, unsigned int i);
-int		ft_print_hex(t_spec *spec, unsigned long int u);
+int		ft_print_hex(t_spec *spec, unsigned int u);
+int		ft_print_pointer(t_spec *spec, unsigned long int u);
 
 char	*ft_format_precision(t_spec *spec, char *si);
 char	*ft_format_sign_space(t_spec *spec, char *si);
