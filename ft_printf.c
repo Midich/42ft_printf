@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 #include <stdarg.h>
 #include <stdlib.h>
 #include <limits.h>
