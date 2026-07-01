@@ -6,7 +6,7 @@
 /*   By: msowinsk <msowinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 12:31:21 by msowinsk          #+#    #+#             */
-/*   Updated: 2026/07/01 14:20:12 by msowinsk         ###   ########.fr       */
+/*   Updated: 2026/07/01 16:29:53 by msowinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	ft_handle_specifiers(t_spec *spec, va_list ap)
 {
 	if (spec->conversion == '%')
-		return (write(0, "%", 1));
+		return (write(1, "%", 1));
 	if (spec->conversion == 'c')
 		return (ft_print_character(spec, va_arg(ap, int)));
 	if (spec->conversion == 's')

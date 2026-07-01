@@ -6,7 +6,7 @@
 /*   By: msowinsk <msowinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 13:55:51 by msowinsk          #+#    #+#             */
-/*   Updated: 2026/07/01 13:03:17 by msowinsk         ###   ########.fr       */
+/*   Updated: 2026/07/01 16:29:53 by msowinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ int	ft_print_string(t_spec *spec, char *s)
 		len = spec->precision;
 	if (spec->minus)
 	{
-		size += write(0, s, len);
+		size += write(1, s, len);
 		while (spec->width-- > len)
-			size += write(0, " ", 1);
+			size += write(1, " ", 1);
 	}
 	else
 	{
 		while (spec->width-- > len)
-			size += write(0, " ", 1);
-		size += write(0, s, len);
+			size += write(1, " ", 1);
+		size += write(1, s, len);
 	}
 	return (size);
 }

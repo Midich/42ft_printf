@@ -6,7 +6,7 @@
 /*   By: msowinsk <msowinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/01 12:57:28 by msowinsk          #+#    #+#             */
-/*   Updated: 2026/07/01 15:27:19 by msowinsk         ###   ########.fr       */
+/*   Updated: 2026/07/01 16:29:53 by msowinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_print_hex(t_spec *spec, unsigned long int u)
 	if (!str)
 		return (-1);
 	len = ft_strlen(str);
-	write(0, str, len);
+	write(1, str, len);
 	free(str);
 	return (len);
 }

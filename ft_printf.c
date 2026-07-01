@@ -6,7 +6,7 @@
 /*   By: msowinsk <msowinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 10:05:45 by msowinsk          #+#    #+#             */
-/*   Updated: 2026/07/01 15:04:49 by msowinsk         ###   ########.fr       */
+/*   Updated: 2026/07/01 16:29:53 by msowinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	ft_printf(const char *format, ...)
 		}
 		else
 		{
-			len += write(0, &format[i], 1);
+			len += write(1, &format[i], 1);
 			i++;
 		}
 	}
