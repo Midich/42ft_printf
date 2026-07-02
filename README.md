@@ -54,7 +54,7 @@ I choose this algorithm because in my mind it was the easiest way to do this pro
 
 # Instructions
 
-To compile the library simply run `make`, if you want to recompile `make re` and to clean run `make clean` or `make fclean` if you want to also delete generated library
+To compile the library simply run `make`, if you want to recompile `make re` and to clean run `make clean` or `make fclean` if you, also, want to delete generated library
 
 # Resources
 
