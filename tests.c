@@ -6,7 +6,7 @@
 /*   By: msowinsk <msowinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/01 14:39:35 by msowinsk          #+#    #+#             */
-/*   Updated: 2026/07/01 16:57:54 by msowinsk         ###   ########.fr       */
+/*   Updated: 2026/07/02 10:55:13 by msowinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,9 @@ int main(void)
 			j++;
 		}
 		//fprintf(stderr,"\n%s", flags);
-		for(int width = -1; width < 10; width++)
+		for(int width = -1; width < 20; width++)
 		{
-			for(int prec = -2; prec < 11; prec++)
+			for(int prec = -2; prec < 20; prec++)
 			{
 				char base[100] = {0};
 				char test[200] = {0};
@@ -153,9 +153,9 @@ int main(void)
 			j++;
 		}
 			//fprintf(stderr,"\n%s", flags);
-		for(int width = -1; width < 10; width++)
+		for(int width = -1; width < 20; width++)
 		{
-			for(int prec = -1; prec < 11; prec++)
+			for(int prec = -1; prec < 20; prec++)
 			{
 				char base[100] = {0};
 				char test[200] = {0};
