@@ -211,11 +211,11 @@ int main(void)
 					memset(buff, 0, BUFF_SIZE);
 					memset(ftbuff, 0, BUFF_SIZE);
 					void *t = malloc(200);
-					l = printf(test, i);
+					l = printf(test, t);
 					fflush(stdout);
 					read(out, buff, BUFF_SIZE);
 					// fprintf(stderr, "%s, %i\n", buff, l)
-					ftl = ft_printf(test, i);
+					ftl = ft_printf(test, t);
 					read(out, ftbuff, BUFF_SIZE);
 					free(t);
 					ASSERT(!memcmp(buff, ftbuff, BUFF_SIZE) && l == ftl);
