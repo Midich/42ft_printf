@@ -6,7 +6,7 @@
 /*   By: msowinsk <msowinsk@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 13:55:51 by msowinsk          #+#    #+#             */
-/*   Updated: 2026/07/01 16:29:53 by msowinsk         ###   ########.fr       */
+/*   Updated: 2026/07/02 10:25:14 by msowinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 static int	ft_string_padding(t_spec *spec, char *s, int len)
 {
-	int size;
+	int	size;
 
 	size = 0;
 	if (spec->minus)
